@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">FreshGuard — Mould Removal and Prevention</title>
+  <meta id="metaDesc" name="description" content="Professional mould treatment for homes and business premises in the Netherlands. Get a clear plan for treating the affected space and understanding the conditions behind the problem." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #021618;
+      --deep: #062d36;
+      --panel: #0a3d4a;
+      --aqua: #8fc640;
+      --aqua-strong: #6b9428;
+      --aqua-soft: #8fc640;
+      --fog: #f6faf1;
+      --white: #ffffff;
+      --muted: #5a6b52;
+      --line: rgba(2, 22, 25, 0.1);
+      --line-strong: rgba(2, 22, 25, 0.16);
+      --soft: rgba(143, 198, 64, 0.12);
+      --radius: 18px;
+      --pad: clamp(20px, 4vw, 48px);
+      --max: 1120px;
+      --wide: 1280px;
+      --nav: 72px;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --font: Figtree, system-ui, sans-serif;
+      --display: Outfit, Figtree, sans-serif;
+      --fx-ease: cubic-bezier(.22, 1, .36, 1);
+      --fx-spring: cubic-bezier(.34, 1.4, .64, 1);
+      --fx-dur: .7s;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body {
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--white);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: visible;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    h1, h2, h3 {
+      font-family: var(--display);
+      font-weight: 650;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    p { color: var(--muted); }
+    strong { color: var(--ink); font-weight: 650; }
+
+    .shell { width: min(var(--max), calc(100% - var(--pad) * 2)); margin: 0 auto; }
+    .shell-wide { width: min(var(--wide), calc(100% - var(--pad) * 2)); margin: 0 auto; }
+    
+    .label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--aqua-strong);
+      margin-bottom: 12px;
+    }
+    .lead { font-size: clamp(17px, 1.5vw, 19px); line-height: 1.6; max-width: 44ch; }
+
+    /* NAV */
+    .nav {
+      position: fixed; inset: 0 0 auto; z-index: 50; height: var(--nav);
+      display: flex; align-items: center;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      transform: translate3d(0, -110%, 0);
+      transition: transform .75s var(--fx-ease), background .35s ease, box-shadow .35s ease, border-color .35s ease;
+    }
+    body.is-ready .nav { transform: none; }
+    .nav.is-scrolled { box-shadow: 0 10px 30px rgba(2,22,25,.08); }
+    .nav-row {
+      width: min(var(--wide), calc(100% - var(--pad) * 2));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--display);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+    }
+    .logo svg { height: 36px; width: auto; color: var(--aqua-strong); }
+    .logo span em { font-style: normal; color: var(--aqua-strong); }
+    
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .nav-links a {
+      transition: color .2s ease, transform .2s var(--fx-spring);
+      cursor: pointer;
+    }
+    .nav-links a:hover { color: var(--ink); transform: translateY(-1px); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-self: end;
+    }
+    .phone {
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--ink);
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+    .phone:hover { color: var(--aqua-strong); }
+    
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--fog);
+      border: 1px solid var(--line-strong);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .lang-btn:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .menu {
+      display: none; width: 42px; height: 42px; border-radius: 999px;
+      border: 1px solid var(--line-strong); background: #fff; cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 54px; padding: 0 28px; border-radius: 999px; border: 0;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      text-align: center;
+      transition:
+        transform .28s var(--fx-spring),
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        box-shadow .28s ease;
+    }
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(2,22,25,.18);
+    }
+    .btn:active { transform: translateY(0) scale(.98); }
+    .btn-aqua { background: var(--aqua); color: var(--ink); }
+    .btn-aqua:hover { background: #9bd648; }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { background: var(--deep); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.12); color: #fff;
+      border: 1px solid rgba(255,255,255,.4);
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+    }
+    .btn-outline {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--line-strong);
+    }
+    .btn-outline:hover {
+      background: var(--fog);
+      border-color: var(--ink);
+    }
+
+    /* MOBILE DRAWER */
+    .drawer {
+      position: fixed; inset: 0; z-index: 60; background: var(--ink); color: #fff;
+      padding: max(24px, env(safe-area-inset-top)) max(var(--pad), env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(var(--pad), env(safe-area-inset-left));
+      display: flex; flex-direction: column; gap: 16px;
+      transform: translateX(100%); transition: transform .4s var(--ease);
+      overflow-y: auto;
+    }
+    .drawer.open { transform: none; }
+    .drawer-top {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+    }
+    .drawer a, .drawer button.nav-link-btn {
+      font-size: 24px; font-family: var(--display); font-weight: 600; text-align: left;
+      background: none; border: 0; color: #fff; cursor: pointer; padding: 8px 0;
+    }
+    .drawer a:hover, .drawer button.nav-link-btn:hover { color: var(--aqua); }
+    .drawer .close-btn {
+      border: 0; border-radius: 999px; padding: 10px 18px;
+      background: #fff; color: var(--ink); font-weight: 700; cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--ink);
+      padding-top: var(--nav);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center center;
+      transform: scale(1.05);
+      transition: transform 1.6s var(--ease);
+      z-index: 0;
+    }
+    body.is-ready .hero-bg { transform: scale(1); }
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(2,22,25,.72) 0%, rgba(2,22,25,.50) 45%, rgba(2,22,25,.22) 75%, rgba(2,22,25,.08) 100%),
+        linear-gradient(180deg, rgba(2,22,25,.25) 0%, rgba(2,22,25,.05) 40%, rgba(2,22,25,.55) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      width: min(var(--wide), calc(100% - var(--pad) * 2));
+      margin-left: max(var(--pad), calc((100% - var(--wide)) / 2 + var(--pad)));
+      margin-right: auto;
+      padding: 48px 0 64px;
+      max-width: 760px;
+    }
+    .hero .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 8px 16px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: rgba(2, 22, 25, 0.65);
+      border: 1px solid rgba(143, 198, 64, 0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 13px;
+    }
+    .google-badge .g-mark { width: 20px; height: 20px; flex: 0 0 auto; }
+    .google-badge .gb-excellent { color: #f4c430; font-weight: 800; font-size: 13px; }
+    .google-badge .gb-score { font-weight: 700; font-size: 13px; }
+    .google-badge .gb-stars { color: #f4c430; letter-spacing: 1px; font-size: 13px; }
+    .google-badge .gb-meta { font-size: 12px; color: rgba(255,255,255,.8); }
+
+    .hero .eyebrow {
+      font-family: var(--display);
+      font-size: clamp(14px, 1.2vw, 16px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #d7f08a;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 14px rgba(0,0,0,.6);
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(38px, 5.5vw, 64px);
+      max-width: 18ch;
+      margin-bottom: 18px;
+      line-height: 1.12;
+      text-shadow: 0 2px 20px rgba(0,0,0,.6), 0 1px 3px rgba(0,0,0,.7);
+    }
+    .hero h1 span {
+      color: #d7f08a;
+      text-shadow: 0 2px 20px rgba(0,0,0,.6), 0 1px 3px rgba(0,0,0,.7);
+    }
+    .hero p {
+      color: rgba(255,255,255,.94);
+      font-size: clamp(16px, 1.4vw, 18px);
+      max-width: 58ch;
+      margin-bottom: 14px;
+      line-height: 1.6;
+      text-shadow: 0 1px 12px rgba(0,0,0,.55), 0 1px 2px rgba(0,0,0,.6);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+    .supporting-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(2, 22, 25, 0.65);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.95);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* SECTION BASE */
+    section { padding: clamp(64px, 8vw, 96px) 0; }
+    .section-head {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 40px;
+      max-width: 680px;
+    }
+    .section-head h2 { font-size: clamp(30px, 4vw, 44px); }
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      justify-items: center;
+    }
+    .section-head.center p { margin-left: auto; margin-right: auto; }
+
+    /* PROBLEMS SECTION */
+    .problems-sec { background: var(--fog); border-bottom: 1px solid var(--line); }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .problems-list {
+      display: grid;
+      gap: 14px;
+      list-style: none;
+    }
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(2,22,25,0.03);
+      transition: all .25s ease;
+    }
+    .problem-item:hover {
+      border-color: var(--aqua);
+      transform: translateX(4px);
+      box-shadow: 0 8px 24px rgba(2,22,25,0.06);
+    }
+    .problem-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--soft); color: var(--aqua-strong);
+      display: grid; place-items: center; flex: 0 0 auto; margin-top: 2px;
+    }
+    .problem-icon svg { width: 16px; height: 16px; }
+    .problem-item span { font-weight: 600; color: var(--ink); font-size: 15px; }
+
+    .problem-note-card {
+      background: var(--white);
+      border: 2px dashed var(--aqua);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: 0 10px 30px rgba(2,22,25,0.04);
+      display: grid;
+      gap: 16px;
+    }
+    .problem-note-card h3 { font-size: 20px; color: var(--ink); }
+    .problem-note-card p { font-size: 15px; }
+
+    /* SERVICE OVERVIEW (3 CARDS) */
+    .service-sec { background: var(--white); }
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--fog);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s var(--fx-ease), box-shadow .35s ease, border-color .35s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(2,22,25,0.08);
+      border-color: var(--aqua);
+    }
+    .service-card::before {
+      content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px;
+      background: var(--aqua); opacity: 0; transition: opacity .3s ease;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card .card-num {
+      font-size: 13px; font-weight: 800; color: var(--aqua-strong);
+      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;
+    }
+    .service-card h3 { font-size: 22px; margin-bottom: 14px; }
+    .service-card p { font-size: 15px; line-height: 1.6; }
+
+    /* PROCESS (4 STEPS) */
+    .process-sec { background: var(--fog); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(2,22,25,0.03);
+      transition: all .3s ease;
+    }
+    .step-card:hover {
+      border-color: var(--aqua);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 36px rgba(2,22,25,0.08);
+    }
+    .step-badge {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--ink); color: #fff;
+      display: grid; place-items: center;
+      font-family: var(--display); font-size: 18px; font-weight: 700;
+    }
+    .step-card h3 { font-size: 18px; line-height: 1.3; }
+    .step-card p { font-size: 14px; line-height: 1.6; }
+
+    /* MID-PAGE CTA BANNER */
+    .mid-cta {
+      background: linear-gradient(135deg, #021619 0%, #062d36 100%);
+      color: #fff;
+      padding: clamp(48px, 6vw, 72px) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .mid-cta::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(143,198,64,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .mid-cta-inner {
+      position: relative; z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+    }
+    .mid-cta h2 { color: #fff; font-size: clamp(28px, 3.8vw, 40px); }
+    .mid-cta p { color: rgba(255,255,255,0.85); font-size: 17px; max-width: 48ch; }
+
+    /* WHO IT'S FOR */
+    .who-sec { background: var(--white); }
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .who-card {
+      background: var(--fog);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .who-card h3 { font-size: 22px; color: var(--ink); }
+    .who-card p { font-size: 15px; line-height: 1.65; }
+
+    /* FAQ ACCORDION */
+    .faq-sec { background: var(--fog); border-top: 1px solid var(--line); }
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all .25s ease;
+    }
+    .faq-item:hover, .faq-item[open] {
+      border-color: var(--aqua);
+      box-shadow: 0 8px 24px rgba(2,22,25,0.06);
+    }
+    .faq-item summary {
+      padding: 20px 24px;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--aqua-strong);
+      transition: transform .25s ease;
+      flex: 0 0 auto;
+    }
+    .faq-item[open] summary::after {
+      content: "−";
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      padding: 0 24px 22px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* ENQUIRY / CONTACT */
+    .contact-sec {
+      position: relative;
+      color: var(--ink);
+      background: linear-gradient(180deg, #f6faf1 0%, #ffffff 100%);
+      border-top: 1px solid var(--line);
+      scroll-margin-top: calc(var(--nav) + 12px);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(28px, 5vw, 56px);
+      align-items: start;
+    }
+    .contact-copy {
+      display: grid;
+      gap: 16px;
+    }
+    .contact-copy h2 { font-size: clamp(30px, 3.8vw, 42px); }
+    .contact-meta {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(2,22,25,0.04);
+    }
+    .contact-meta a.phone-lg {
+      font-family: var(--display);
+      font-size: clamp(22px, 2.5vw, 28px);
+      font-weight: 700;
+      color: var(--aqua-strong);
+    }
+    .contact-meta span { color: var(--muted); font-size: 14px; font-weight: 600; }
+    
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--aqua);
+      border-radius: 22px;
+      padding: clamp(24px, 3.5vw, 36px);
+      box-shadow: 0 18px 45px rgba(2,22,25,.07);
+    }
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .full { grid-column: 1 / -1; }
+    label {
+      display: grid; gap: 6px;
+      font-size: 13px; font-weight: 600;
+      color: var(--ink);
+    }
+    input, textarea, select {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--line-strong);
+      background: var(--fog);
+      padding: 13px 14px;
+      color: var(--ink);
+      outline: none;
+      transition: all .2s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--aqua-strong);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(143,198,64,0.2);
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .upload {
+      border: 2px dashed rgba(2,22,25,0.2);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 14px;
+      background: var(--fog);
+      transition: all .2s ease;
+    }
+    .upload:hover { border-color: var(--aqua-strong); background: #fff; }
+    .form-bottom {
+      display: flex; justify-content: space-between; gap: 14px;
+      align-items: center; flex-wrap: wrap; margin-top: 6px;
+    }
+    .fine { font-size: 12px; color: var(--muted); }
+    #formOk {
+      display: none;
+      background: var(--fog);
+      border: 1px solid var(--aqua);
+      padding: 16px;
+      border-radius: 12px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.78);
+      padding: 48px 0 32px;
+    }
+    .foot-top {
+      display: flex; justify-content: space-between; gap: 24px;
+      align-items: center; flex-wrap: wrap; margin-bottom: 28px;
+    }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 14px; font-weight: 600; }
+    .foot-links a:hover { color: var(--aqua); }
+    .foot-bottom {
+      display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+      padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12);
+      font-size: 13px;
+      color: rgba(255,255,255,.7);
+    }
+
+    /* AMBIENT FLYERS (LEAVES) */
+    .flyers {
+      position: fixed; inset: 0; z-index: 6; pointer-events: none; overflow: hidden;
+    }
+    .flyer {
+      position: absolute; display: block; will-change: transform;
+      animation-timing-function: ease-in-out; animation-iteration-count: infinite;
+    }
+    .flyer-leaf {
+      width: 52px; height: 52px; color: var(--aqua); opacity: 0.45;
+      filter: drop-shadow(0 6px 14px rgba(143,198,64,.3));
+    }
+    .flyer-leaf svg { width: 100%; height: 100%; display: block; }
+    .f1 { left: 8%; top: 20%; animation: flyA 14s infinite; }
+    .f2 { left: 86%; top: 28%; animation: flyB 16s infinite; animation-delay: -3s; }
+    .f3 { left: 14%; top: 72%; animation: flyC 15s infinite; animation-delay: -6s; }
+    .f4 { left: 82%; top: 76%; animation: flyA 13s infinite reverse; animation-delay: -2s; }
+
+    @keyframes flyA {
+      0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+      50%  { transform: translate3d(-30px, -150px, 0) rotate(-15deg) scale(.95); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+    }
+    @keyframes flyB {
+      0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+      50%  { transform: translate3d(50px, 120px, 0) rotate(25deg); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    }
+    @keyframes flyC {
+      0%   { transform: translate3d(0, 0, 0) rotate(12deg); }
+      50%  { transform: translate3d(-90px, -80px, 0) rotate(-30deg); }
+      100% { transform: translate3d(0, 0, 0) rotate(12deg); }
+    }
+
+    /* FABS */
+    .fabs {
+      position: fixed;
+      right: max(18px, env(safe-area-inset-right));
+      bottom: max(18px, env(safe-area-inset-bottom));
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .fab {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 0; cursor: pointer;
+      box-shadow: 0 10px 28px rgba(2,22,25,.22);
+      transition: all .28s var(--fx-spring);
+    }
+    .fab:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 14px 32px rgba(2,22,25,.28); }
+    .fab svg { width: 26px; height: 26px; display: block; }
+    .fab-wa { background: #25d366; color: #fff; }
+    .fab-wa:hover { background: #1ebe57; }
+    .fab-lang {
+      background: var(--ink); color: #fff; font-family: var(--display);
+      font-size: 14px; font-weight: 700; letter-spacing: 0.06em;
+    }
+    .fab-top {
+      background: var(--aqua); color: var(--ink);
+      visibility: hidden; opacity: 0; pointer-events: none;
+    }
+    .fab-top.is-visible { visibility: visible; opacity: 1; pointer-events: auto; }
+
+    /* MOBILE FLOATING BAR */
+    .mobile-bar {
+      display: none;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+      padding: 10px 16px;
+      z-index: 55;
+      gap: 10px;
+    }
+    .mobile-bar a { flex: 1; min-height: 46px; font-size: 14px; }
+
+    /* ANIMATIONS */
+    .fx {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+      transition: opacity var(--fx-dur) var(--fx-ease), transform var(--fx-dur) var(--fx-ease);
+      transition-delay: calc(var(--d, 0) * 55ms);
+    }
+    .fx.in { opacity: 1; transform: none; }
+
+    @media (max-width: 980px) {
+      :root { --nav: 64px; --pad: 20px; }
+      .nav-links { display: none; }
+      .menu { display: inline-flex; align-items: center; justify-content: center; }
+      .problems-grid, .cards-grid-3, .steps-grid, .who-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .hero { min-height: auto; padding-top: calc(var(--nav) + 20px); }
+      .hero-inner { padding: 24px 0 48px; }
+      .phone { display: none; }
+    }
+
+    @media (max-width: 700px) {
+      :root { --pad: 16px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      form { grid-template-columns: 1fr; }
+      .form-bottom { flex-direction: column; align-items: stretch; }
+      .form-bottom .btn { width: 100%; }
+      .mobile-bar { display: flex; }
+      footer { padding-bottom: 96px; }
+      .fabs { bottom: 74px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating particles -->
+  <div class="flyers" aria-hidden="true">
+    <span class="flyer flyer-leaf f1">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M52 8C28 10 12 28 12 48c12-2 28-14 36-36 2 14-2 28-12 38 18-8 28-24 16-42z" fill="currentColor"/><path d="M20 46c10-8 20-22 24-34" stroke="currentColor" stroke-width="2" opacity=".45"/></svg>
+    </span>
+    <span class="flyer flyer-leaf f2">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M52 8C28 10 12 28 12 48c12-2 28-14 36-36 2 14-2 28-12 38 18-8 28-24 16-42z" fill="currentColor"/><path d="M20 46c10-8 20-22 24-34" stroke="currentColor" stroke-width="2" opacity=".45"/></svg>
+    </span>
+    <span class="flyer flyer-leaf f3">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M52 8C28 10 12 28 12 48c12-2 28-14 36-36 2 14-2 28-12 38 18-8 28-24 16-42z" fill="currentColor"/><path d="M20 46c10-8 20-22 24-34" stroke="currentColor" stroke-width="2" opacity=".45"/></svg>
+    </span>
+    <span class="flyer flyer-leaf f4">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M52 8C28 10 12 28 12 48c12-2 28-14 36-36 2 14-2 28-12 38 18-8 28-24 16-42z" fill="currentColor"/><path d="M20 46c10-8 20-22 24-34" stroke="currentColor" stroke-width="2" opacity=".45"/></svg>
+    </span>
+  </div>
+
+  <!-- Header -->
+  <header class="nav">
+    <div class="nav-row">
+      <a class="logo" href="#hero" aria-label="FreshGuard">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M20 4C10 8 4 18 4 28c8-1 18-9 24-22 1 9-1 18-8 24 12-5 18-15 10-26z" fill="currentColor"/><path d="M10 26c6-5 13-14 16-22" stroke="#021619" stroke-width="2" opacity=".3"/></svg>
+        <span>Fresh<em>Guard</em></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#problems" id="navProblems">Problems</a>
+        <a href="#service" id="navService">Treatment Plan</a>
+        <a href="#process" id="navProcess">Process</a>
+        <a href="#who" id="navWho">Who It's For</a>
+        <a href="#faq" id="navFaq">FAQ</a>
+      </div>
+
+      <div class="nav-right">
+        <a class="phone" href="tel:+31625133975">+31 6 25133975</a>
+        <button type="button" class="lang-btn" id="langNavBtn" onclick="toggleLang()">NL</button>
+        <a class="btn btn-aqua" href="#enquiry" id="navCtaBtn" style="min-height: 42px; padding: 0 18px; font-size: 13px;">Request Quote</a>
+        <button class="menu" id="menuBtn" aria-label="Open Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-top">
+      <div class="logo" style="color: #fff;">
+        <svg viewBox="0 0 40 40" fill="none" style="height:32px; color:var(--aqua);"><path d="M20 4C10 8 4 18 4 28c8-1 18-9 24-22 1 9-1 18-8 24 12-5 18-15 10-26z" fill="currentColor"/></svg>
+        <span>Fresh<em>Guard</em></span>
+      </div>
+      <button type="button" class="close-btn" id="closeMenu">Close</button>
+    </div>
+
+    <a href="#problems" onclick="closeDrawer()" id="drawerProblems">Problems</a>
+    <a href="#service" onclick="closeDrawer()" id="drawerService">Treatment Plan</a>
+    <a href="#process" onclick="closeDrawer()" id="drawerProcess">Process</a>
+    <a href="#who" onclick="closeDrawer()" id="drawerWho">Who It's For</a>
+    <a href="#faq" onclick="closeDrawer()" id="drawerFaq">FAQ</a>
+    <a href="#enquiry" onclick="closeDrawer()" id="drawerEnquiry">Request a Quote</a>
+
+    <div style="margin-top: auto; padding-top: 20px; display: flex; gap: 10px; align-items: center;">
+      <button type="button" class="lang-btn" onclick="toggleLang(); closeDrawer();" id="drawerLangBtn" style="flex:1; padding: 12px;">Switch Language: NL</button>
+      <a class="btn btn-aqua" href="tel:+31625133975" style="flex:1; min-height: 44px; font-size: 13px;">Call FreshGuard</a>
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <img class="hero-bg" src="hero sec.jfif" alt="FreshGuard Professional Mould Treatment Specialist" />
+    <div class="hero-inner">
+      <div class="google-badge fx">
+        <svg class="g-mark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        <span class="gb-excellent" id="gbExcellent">Excellent</span>
+        <span class="gb-score">4.9/5</span>
+        <span class="gb-stars" aria-hidden="true">★★★★★</span>
+        <span class="gb-meta" id="gbMeta">FreshGuard Netherlands</span>
+      </div>
+      
+      <div class="eyebrow fx" style="--d:1" id="heroEyebrow">Professional mould treatment for homes and business premises</div>
+      <h1 class="fx" style="--d:2" id="heroH1">Professional Mould Removal for Your Property</h1>
+      <p class="fx" style="--d:3" id="heroP1">Mould on walls, ceilings or around windows? Get a clear plan for treating the affected space and understanding the conditions behind the problem. FreshGuard helps property owners, landlords and businesses arrange professional mould treatment in the Netherlands.</p>
+      <p class="fx" style="--d:4" id="heroP2">Tell us where you have noticed mould, share your postcode and add photos if you can. We can then discuss the appropriate next step for your property.</p>
+
+      <div class="hero-actions fx" style="--d:5">
+        <a class="btn btn-aqua" href="#enquiry" id="heroPrimaryBtn">Request a Mould Treatment Quote</a>
+        <a class="btn btn-ghost" href="tel:+31625133975" id="heroSecondaryBtn">Call FreshGuard</a>
+      </div>
+
+      <div class="supporting-line fx" style="--d:6" id="heroSupporting">
+        Property-specific assessment • Treatment options explained • Advice on reducing recurrence
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMS WE HELP ASSESS -->
+  <section class="problems-sec" id="problems">
+    <div class="shell">
+      <div class="section-head fx">
+        <div class="label" id="problemsLabel">Problems we help assess</div>
+        <h2 id="problemsH2">Get Help With Mould That Keeps Coming Back</h2>
+        <p class="lead" id="problemsIntro">You may be looking for help with a small affected area, several rooms or a problem that has returned after cleaning. Tell us what you can see and what has already been tried, so the enquiry starts with your actual situation.</p>
+      </div>
+
+      <div class="problems-grid">
+        <ul class="problems-list fx" style="--d:1" id="problemsList">
+          <li class="problem-item">
+            <span class="problem-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Bathroom mould on walls or ceilings.</span>
+          </li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Mould in bedrooms, living spaces or around windows.</span>
+          </li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Affected basements, crawl spaces or storage areas.</span>
+          </li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Mould in a rental property or commercial space.</span>
+          </li>
+          <li class="problem-item">
+            <span class="problem-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>Recurring patches accompanied by dampness or a musty smell.</span>
+          </li>
+        </ul>
+
+        <div class="problem-note-card fx" style="--d:2">
+          <div class="label" style="margin-bottom:0;" id="problemsCardLabel">Guidance</div>
+          <h3 id="problemsCardTitle">Need an Assessment?</h3>
+          <p id="problemsBottomText">Not sure whether mould treatment or a moisture inspection is the right starting point? Describe the problem in the form and ask us to assess the options.</p>
+          <a class="btn btn-dark" href="#enquiry" id="problemsCardBtn" style="justify-self: start; min-height: 46px; font-size: 14px;">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE OVERVIEW (3 CARDS) -->
+  <section class="service-sec" id="service">
+    <div class="shell">
+      <div class="section-head center fx">
+        <div class="label" id="serviceLabel">Service overview</div>
+        <h2 id="serviceH2">A Treatment Plan Built Around the Affected Space</h2>
+        <p class="lead" id="serviceIntro">The size of the affected area, the materials involved and the conditions inside the property all matter when discussing treatment. Your enquiry helps establish what needs closer attention before work is proposed.</p>
+      </div>
+
+      <div class="cards-grid-3 fx" style="--d:1" id="serviceCards">
+        <article class="service-card">
+          <div class="card-num">01</div>
+          <h3>Assessment before treatment</h3>
+          <p>Share the location of the mould, how long it has been present and whether it has returned. Photos can help with the initial discussion; an on-site assessment may still be needed.</p>
+        </article>
+        <article class="service-card">
+          <div class="card-num">02</div>
+          <h3>Professional mould treatment</h3>
+          <p>Discuss suitable remediation for the affected areas. Where appropriate, the proposed approach may include fogging as part of a broader treatment plan. The agreed scope should make clear what will be treated.</p>
+        </article>
+        <article class="service-card">
+          <div class="card-num">03</div>
+          <h3>Moisture and prevention advice</h3>
+          <p>Ask about moisture, condensation and ventilation factors that may need attention. Understanding these issues helps you plan follow-up work alongside mould treatment.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS (4 STEPS) -->
+  <section class="process-sec" id="process">
+    <div class="shell">
+      <div class="section-head center fx">
+        <div class="label" id="processLabel">Process</div>
+        <h2 id="processH2">From Your First Enquiry to a Clear Next Step</h2>
+      </div>
+
+      <div class="steps-grid fx" style="--d:1" id="processSteps">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <h3>Tell us about the problem</h3>
+          <p>Send your postcode, a short description and optional photos. Mention the rooms affected and whether the mould has returned.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <h3>Discuss the assessment</h3>
+          <p>We review the information and discuss whether a visit or further investigation is appropriate. Ask about any assessment charges before booking.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <h3>Review the proposed work</h3>
+          <p>Consider the treatment scope, preparation requirements and quotation before deciding how to proceed.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <h3>Plan the aftercare</h3>
+          <p>Follow the instructions for the treated area and address any moisture or ventilation issues identified during the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-PAGE CTA -->
+  <section class="mid-cta">
+    <div class="shell">
+      <div class="mid-cta-inner fx">
+        <h2 id="midCtaH2">Ready to Have the Mould Assessed?</h2>
+        <p id="midCtaText">Send a few details about your property so we can discuss a suitable starting point.</p>
+        <a class="btn btn-aqua" href="#enquiry" id="midCtaBtn">Request My Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THE SERVICE IS FOR -->
+  <section class="who-sec" id="who">
+    <div class="shell">
+      <div class="section-head fx">
+        <div class="label" id="whoLabel">Who the service is for</div>
+        <h2 id="whoH2">Help for Homeowners and Property Professionals</h2>
+      </div>
+
+      <div class="who-grid fx" style="--d:1">
+        <div class="who-card">
+          <div class="label" style="margin-bottom:0;" id="whoCard1Label">Homeowners & Occupants</div>
+          <p id="whoP1">Whether this is your home, a property you let or premises you manage, your enquiry should lead to a practical conversation about the space. Tell us if occupants, tenants or opening hours need to be considered when arranging an assessment or treatment.</p>
+        </div>
+        <div class="who-card">
+          <div class="label" style="margin-bottom:0;" id="whoCard2Label">Landlords & Commercial</div>
+          <p id="whoP2">For landlords and property managers, include the property postcode and confirm who can provide access. For businesses, describe how the affected area is used.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREQUENTLY ASKED QUESTIONS -->
+  <section class="faq-sec" id="faq">
+    <div class="shell">
+      <div class="section-head center fx">
+        <div class="label" id="faqLabel">Frequently asked questions</div>
+        <h2 id="faqH2">Questions About Professional Mould Removal</h2>
+      </div>
+
+      <div class="faq-list fx" style="--d:1" id="faqList">
+        <details class="faq-item" open>
+          <summary>How much does mould removal cost?</summary>
+          <div class="faq-answer">
+            <p>The quotation depends on the affected area, access, materials and proposed treatment. Send a description and photos to start the discussion. If an inspection is required before a quote, ask about its cost when arranging it.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Can you give advice from photos?</summary>
+          <div class="faq-answer">
+            <p>Photos can support an initial discussion, but they may not show hidden moisture or the full extent of the problem. We can discuss whether an on-site assessment is appropriate.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Can mould return after treatment?</summary>
+          <div class="faq-answer">
+            <p>Recurrence is possible if conditions that support mould remain. The treatment discussion should include relevant moisture and ventilation issues and any separate work that may be needed.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to leave the property during treatment?</summary>
+          <div class="faq-answer">
+            <p>This depends on the method and areas being treated. Ask for the preparation, access, ventilation and re-entry instructions before work starts, including arrangements for children and pets.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you treat rental and commercial properties?</summary>
+          <div class="faq-answer">
+            <p>Enquiries are welcome from homeowners, landlords and businesses. Include the property type, location and access arrangements so the requirements can be discussed.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Is an assessment free?</summary>
+          <div class="faq-answer">
+            <p>Assessment arrangements depend on location and the complexity of the enquiry. Confirm the format and any charges before booking; do not assume every on-site visit is free.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL ENQUIRY / CONTACT SECTION -->
+  <section class="contact-sec" id="enquiry">
+    <div class="shell contact-grid">
+      <div class="contact-copy fx">
+        <div class="label" id="enquiryLabel">Final enquiry section</div>
+        <h2 id="enquiryH2">Tell Us Where You Need Mould Removed</h2>
+        <p class="lead" id="enquirySub">Share the details below to request a property-specific quotation or discuss whether an assessment is needed first.</p>
+        
+        <div class="contact-meta">
+          <span id="contactDirectHead">Direct Contact:</span>
+          <a class="phone-lg" href="tel:+31625133975">+31 6 25133975</a>
+          <a href="mailto:info@freshguard.nl" style="font-weight:600; color:var(--ink);">info@freshguard.nl</a>
+          <span id="contactLineText">Prefer to speak to us? Call +31 6 25133975 or email info@freshguard.nl.</span>
+          <hr style="border:0; border-top:1px solid var(--line); margin:4px 0;" />
+          <span style="font-size: 13px; color: var(--muted);">FreshGuard B.V. • Bachlaan 5, 1272 EJ Huizen • KVK 95689443</span>
+        </div>
+      </div>
+
+      <div class="form-card fx" style="--d:1">
+        <form id="enquiryForm">
+          <label class="full" id="lbl-name">Name *
+            <input type="text" name="name" id="input-name" required />
+          </label>
+
+          <label id="lbl-phone">Phone number *
+            <input type="tel" name="phone" id="input-phone" required />
+          </label>
+
+          <label id="lbl-email">Email address *
+            <input type="email" name="email" id="input-email" required />
+          </label>
+
+          <label id="lbl-postcode">Property postcode *
+            <input type="text" name="postcode" id="input-postcode" required />
+          </label>
+
+          <label id="lbl-propertyType">Property type
+            <select name="propertyType" id="input-propertyType">
+              <option value="Home">Home</option>
+              <option value="Rental property">Rental property</option>
+              <option value="Business premises">Business premises</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label class="full" id="lbl-message">Where have you noticed mould? *
+            <textarea name="message" id="input-message" placeholder="For example: mould on the bedroom ceiling, present for two months and returning after cleaning. Please include the approximate affected area if known." required></textarea>
+          </label>
+
+          <div class="upload full" id="uploadBox">
+            <span id="uploadLabel">Add photos — optional</span>
+            <input type="file" id="photosInput" accept="image/*" multiple hidden />
+            <div id="fileNames" class="fine" style="margin-top:6px; color:var(--aqua-strong); font-weight:600;"></div>
+          </div>
+
+          <p class="fine full" id="formHelper">Please provide a phone number or email address so we can respond. Photos are optional.</p>
+          <p class="fine full" id="privacyText">We use the information you submit to handle your enquiry. Read our Privacy Policy for details.</p>
+
+          <div class="form-bottom full">
+            <button class="btn btn-aqua" type="submit" id="submitBtn">Request a Mould Treatment Quote</button>
+          </div>
+
+          <div id="formOk" class="full">
+            <p id="successMessage">Thank you. Your mould enquiry has been received. FreshGuard will contact you using the details provided.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="shell">
+      <div class="foot-top">
+        <a class="logo" href="#hero" style="color:#fff;">
+          <svg viewBox="0 0 40 40" fill="none" style="height:32px; color:var(--aqua);"><path d="M20 4C10 8 4 18 4 28c8-1 18-9 24-22 1 9-1 18-8 24 12-5 18-15 10-26z" fill="currentColor"/></svg>
+          <span>Fresh<em>Guard</em></span>
+        </a>
+        <div class="foot-links">
+          <a href="#problems" id="footLink1">Problems</a>
+          <a href="#service" id="footLink2">Treatment Plan</a>
+          <a href="#process" id="footLink3">Process</a>
+          <a href="#faq" id="footLink4">FAQ</a>
+          <a href="#enquiry" id="footLink5">Contact</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span id="footerText">FreshGuard B.V. • Bachlaan 5, 1272 EJ Huizen • KVK 95689443 • Privacy Policy</span>
+        <span>+31 6 25133975 • info@freshguard.nl</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTION BUTTONS -->
+  <div class="fabs" aria-label="Quick actions">
+    <button type="button" class="fab fab-top" id="backTop" aria-label="Back to top">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="fab fab-lang" id="fabLang" onclick="toggleLang()" aria-label="Switch language">
+      <span>NL</span>
+    </button>
+    <a class="fab fab-wa" href="https://api.whatsapp.com/send/?phone=31625133975&text=FreshGuard%20Mould%20Enquiry" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.05 0C5.5 0 .2 5.3.2 11.85c0 2.09.55 4.13 1.6 5.94L0 24l6.4-1.67a11.8 11.8 0 0 0 5.64 1.44h.01c6.55 0 11.85-5.3 11.85-11.85 0-3.16-1.23-6.14-3.4-8.42zM12.05 21.2h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.21-3.8 1 1.01-3.7-.24-.38a9.8 9.8 0 0 1-1.5-5.24C1.15 6.4 6.05 1.5 12.05 1.5c2.62 0 5.08 1.02 6.93 2.87a9.74 9.74 0 0 1 2.87 6.93c0 6-4.9 10.9-9.8 10.9zm5.68-7.34c-.31-.16-1.84-.91-2.12-1.01-.28-.1-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.54-.92-.82-1.54-1.84-1.72-2.15-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.05-1.08 2.56s1.1 2.97 1.26 3.18c.16.21 2.16 3.3 5.24 4.62.73.32 1.3.5 1.75.64.73.23 1.4.2 1.93.12.59-.09 1.84-.75 2.1-1.48.26-.72.26-1.34.18-1.48-.08-.13-.28-.21-.59-.36z"/></svg>
+    </a>
+  </div>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="mobile-bar" id="mobileBar">
+    <a class="btn btn-dark" href="tel:+31625133975" id="mobileCallBtn">Call FreshGuard</a>
+    <a class="btn btn-aqua" href="#enquiry" id="mobileQuoteBtn">Request a Quote</a>
+  </div>
+
+  <!-- CONTENT DATA & ENGINE -->
+  <script>
+    var currentLang = 'en';
+
+    var pageData = {
+      en: {
+        title: "FreshGuard — Mould Removal and Prevention",
+        metaDesc: "Professional mould treatment for homes and business premises in the Netherlands. Get a clear plan for treating the affected space and understanding conditions.",
+        nav: { problems: "Problems", service: "Treatment Plan", process: "Process", who: "Who It's For", faq: "FAQ", quote: "Request Quote" },
+        hero: {
+          eyebrow: "Professional mould treatment for homes and business premises",
+          h1: "Professional Mould Removal for Your Property",
+          p1: "Mould on walls, ceilings or around windows? Get a clear plan for treating the affected space and understanding the conditions behind the problem. FreshGuard helps property owners, landlords and businesses arrange professional mould treatment in the Netherlands.",
+          p2: "Tell us where you have noticed mould, share your postcode and add photos if you can. We can then discuss the appropriate next step for your property.",
+          primaryBtn: "Request a Mould Treatment Quote",
+          secondaryBtn: "Call FreshGuard",
+          supporting: "Property-specific assessment • Treatment options explained • Advice on reducing recurrence"
+        },
+        problems: {
+          label: "Problems we help assess",
+          h2: "Get Help With Mould That Keeps Coming Back",
+          intro: "You may be looking for help with a small affected area, several rooms or a problem that has returned after cleaning. Tell us what you can see and what has already been tried, so the enquiry starts with your actual situation.",
+          items: [
+            "Bathroom mould on walls or ceilings.",
+            "Mould in bedrooms, living spaces or around windows.",
+            "Affected basements, crawl spaces or storage areas.",
+            "Mould in a rental property or commercial space.",
+            "Recurring patches accompanied by dampness or a musty smell."
+          ],
+          bottomText: "Not sure whether mould treatment or a moisture inspection is the right starting point? Describe the problem in the form and ask us to assess the options."
+        },
+        service: {
+          label: "Service overview",
+          h2: "A Treatment Plan Built Around the Affected Space",
+          intro: "The size of the affected area, the materials involved and the conditions inside the property all matter when discussing treatment. Your enquiry helps establish what needs closer attention before work is proposed.",
+          cards: [
+            {
+              num: "01",
+              heading: "Assessment before treatment",
+              text: "Share the location of the mould, how long it has been present and whether it has returned. Photos can help with the initial discussion; an on-site assessment may still be needed."
+            },
+            {
+              num: "02",
+              heading: "Professional mould treatment",
+              text: "Discuss suitable remediation for the affected areas. Where appropriate, the proposed approach may include fogging as part of a broader treatment plan. The agreed scope should make clear what will be treated."
+            },
+            {
+              num: "03",
+              heading: "Moisture and prevention advice",
+              text: "Ask about moisture, condensation and ventilation factors that may need attention. Understanding these issues helps you plan follow-up work alongside mould treatment."
+            }
+          ]
+        },
+        process: {
+          label: "Process",
+          h2: "From Your First Enquiry to a Clear Next Step",
+          steps: [
+            {
+              badge: "1",
+              heading: "Tell us about the problem",
+              text: "Send your postcode, a short description and optional photos. Mention the rooms affected and whether the mould has returned."
+            },
+            {
+              badge: "2",
+              heading: "Discuss the assessment",
+              text: "We review the information and discuss whether a visit or further investigation is appropriate. Ask about any assessment charges before booking."
+            },
+            {
+              badge: "3",
+              heading: "Review the proposed work",
+              text: "Consider the treatment scope, preparation requirements and quotation before deciding how to proceed."
+            },
+            {
+              badge: "4",
+              heading: "Plan the aftercare",
+              text: "Follow the instructions for the treated area and address any moisture or ventilation issues identified during the process."
+            }
+          ]
+        },
+        midCta: {
+          h2: "Ready to Have the Mould Assessed?",
+          text: "Send a few details about your property so we can discuss a suitable starting point.",
+          btn: "Request My Quote"
+        },
+        who: {
+          label: "Who the service is for",
+          h2: "Help for Homeowners and Property Professionals",
+          p1: "Whether this is your home, a property you let or premises you manage, your enquiry should lead to a practical conversation about the space. Tell us if occupants, tenants or opening hours need to be considered when arranging an assessment or treatment.",
+          p2: "For landlords and property managers, include the property postcode and confirm who can provide access. For businesses, describe how the affected area is used."
+        },
+        faq: {
+          label: "Frequently asked questions",
+          h2: "Questions About Professional Mould Removal",
+          items: [
+            {
+              q: "How much does mould removal cost?",
+              a: "The quotation depends on the affected area, access, materials and proposed treatment. Send a description and photos to start the discussion. If an inspection is required before a quote, ask about its cost when arranging it."
+            },
+            {
+              q: "Can you give advice from photos?",
+              a: "Photos can support an initial discussion, but they may not show hidden moisture or the full extent of the problem. We can discuss whether an on-site assessment is appropriate."
+            },
+            {
+              q: "Can mould return after treatment?",
+              a: "Recurrence is possible if conditions that support mould remain. The treatment discussion should include relevant moisture and ventilation issues and any separate work that may be needed."
+            },
+            {
+              q: "Do I need to leave the property during treatment?",
+              a: "This depends on the method and areas being treated. Ask for the preparation, access, ventilation and re-entry instructions before work starts, including arrangements for children and pets."
+            },
+            {
+              q: "Do you treat rental and commercial properties?",
+              a: "Enquiries are welcome from homeowners, landlords and businesses. Include the property type, location and access arrangements so the requirements can be discussed."
+            },
+            {
+              q: "Is an assessment free?",
+              a: "Assessment arrangements depend on location and the complexity of the enquiry. Confirm the format and any charges before booking; do not assume every on-site visit is free."
+            }
+          ]
+        },
+        enquiry: {
+          label: "Final enquiry section",
+          h2: "Tell Us Where You Need Mould Removed",
+          sub: "Share the details below to request a property-specific quotation or discuss whether an assessment is needed first.",
+          formLabels: {
+            name: "Name *",
+            phone: "Phone number *",
+            email: "Email address *",
+            postcode: "Property postcode *",
+            propertyType: "Property type",
+            propertyOptions: ["Home", "Rental property", "Business premises", "Other"],
+            message: "Where have you noticed mould? *",
+            messagePlaceholder: "For example: mould on the bedroom ceiling, present for two months and returning after cleaning. Please include the approximate affected area if known.",
+            photos: "Add photos — optional",
+            helper: "Please provide a phone number or email address so we can respond. Photos are optional.",
+            privacy: "We use the information you submit to handle your enquiry. Read our Privacy Policy for details.",
+            submit: "Request a Mould Treatment Quote",
+            success: "Thank you. Your mould enquiry has been received. FreshGuard will contact you using the details provided."
+          },
+          contactLine: "Prefer to speak to us? Call +31 6 25133975 or email info@freshguard.nl.",
+          mobileButtons: { call: "Call FreshGuard", quote: "Request a Quote" },
+          footer: "FreshGuard B.V. • Bachlaan 5, 1272 EJ Huizen • KVK 95689443 • Privacy Policy"
+        }
+      },
+      nl: {
+        title: "FreshGuard — Schimmelverwijdering en preventie",
+        metaDesc: "Professionele schimmelbehandeling voor woningen en bedrijfspanden in Nederland. Laat beoordelen welke behandeling bij uw situatie past.",
+        nav: { problems: "Situaties", service: "Aanpak", process: "Werkwijze", who: "Voor wie", faq: "Veelgestelde vragen", quote: "Offerte aanvragen" },
+        hero: {
+          eyebrow: "Professionele schimmelbehandeling voor woningen en bedrijfspanden",
+          h1: "Schimmel Professioneel Laten Verwijderen",
+          p1: "Schimmel op muren, plafonds of rond de ramen? Laat beoordelen welke behandeling bij uw situatie past en welke omstandigheden een rol kunnen spelen. FreshGuard helpt woningeigenaren, verhuurders en bedrijven in Nederland bij het aanpakken van schimmelproblemen.",
+          p2: "Vertel waar u schimmel ziet, vul uw postcode in en voeg eventueel foto's toe. Zo kunnen we met u bespreken wat een passende volgende stap is.",
+          primaryBtn: "Vraag een offerte aan",
+          secondaryBtn: "Bel FreshGuard",
+          supporting: "Beoordeling van uw situatie • Uitleg over de behandeling • Advies om terugkeer te beperken"
+        },
+        problems: {
+          label: "Problems we help assess",
+          h2: "Blijft de Schimmel Terugkomen?",
+          intro: "Misschien gaat het om een kleine plek, om meerdere kamers of om schimmel die na het schoonmaken opnieuw verschijnt. Geef aan wat u ziet en wat u al heeft geprobeerd. Dan kunnen we gericht met u meedenken.",
+          items: [
+            "Schimmel op de muren of het plafond van de badkamer.",
+            "Schimmel in slaapkamers, woonruimtes of rond ramen.",
+            "Schimmel in de kelder, kruipruimte of berging.",
+            "Schimmelproblemen in een huurwoning of bedrijfspand.",
+            "Terugkerende plekken in combinatie met vocht of een muffe geur."
+          ],
+          bottomText: "Twijfelt u of een schimmelbehandeling of een vochtinspectie nodig is? Beschrijf de situatie in het formulier. We bespreken graag welke stap het beste aansluit op uw vraag."
+        },
+        service: {
+          label: "Service overview",
+          h2: "Een Aanpak die Past bij Uw Woning of Pand",
+          intro: "De omvang van de schimmel, de aangetaste materialen en de omstandigheden in de ruimte bepalen mede welke aanpak geschikt is. Met uw informatie kunnen we bespreken wat nader onderzocht moet worden voordat een behandeling wordt voorgesteld.",
+          cards: [
+            {
+              num: "01",
+              heading: "Eerst de situatie beoordelen",
+              text: "Geef aan waar de schimmel zit, hoelang deze aanwezig is en of de plekken terugkomen. Foto's helpen bij een eerste beoordeling. Een inspectie op locatie kan alsnog nodig zijn."
+            },
+            {
+              num: "02",
+              heading: "Professionele schimmelbehandeling",
+              text: "We bespreken een passende behandeling voor de aangetaste delen. Waar geschikt kan verneveling onderdeel zijn van de aanpak. In het voorstel moet duidelijk zijn welke werkzaamheden en ruimtes zijn inbegrepen."
+            },
+            {
+              num: "03",
+              heading: "Aandacht voor vocht en preventie",
+              text: "Bespreek ook mogelijke vocht-, condensatie- en ventilatieproblemen. Zo krijgt u zicht op eventuele vervolgstappen naast het verwijderen van de schimmel."
+            }
+          ]
+        },
+        process: {
+          label: "Process",
+          h2: "Zo Werkt een Aanvraag bij FreshGuard",
+          steps: [
+            {
+              badge: "1",
+              heading: "Beschrijf uw schimmelprobleem",
+              text: "Stuur uw postcode, een korte toelichting en eventueel foto's. Vermeld welke ruimtes zijn getroffen en of de schimmel terugkomt."
+            },
+            {
+              badge: "2",
+              heading: "Bespreek de beoordeling",
+              text: "We bekijken uw informatie en bespreken of een bezoek of aanvullend onderzoek passend is. Vraag vooraf naar eventuele inspectiekosten."
+            },
+            {
+              badge: "3",
+              heading: "Bekijk het behandelvoorstel",
+              text: "Neem de werkzaamheden, voorbereiding en offerte door voordat u besluit om verder te gaan."
+            },
+            {
+              badge: "4",
+              heading: "Volg het advies na de behandeling",
+              text: "Houd rekening met de instructies voor de behandelde ruimte en met eventuele vocht- of ventilatieproblemen die aandacht vragen."
+            }
+          ]
+        },
+        midCta: {
+          h2: "Wilt u de Schimmel Laten Beoordelen?",
+          text: "Stuur ons enkele gegevens over uw woning of pand. Dan bespreken we een passende eerste stap.",
+          btn: "Vraag mijn offerte aan"
+        },
+        who: {
+          label: "Who the service is for",
+          h2: "Voor Woningeigenaren en Vastgoedprofessionals",
+          p1: "Of het nu gaat om uw eigen woning, een verhuurd pand of een bedrijfsruimte: de aanpak moet passen bij het gebruik van het gebouw. Laat weten of we bij een afspraak rekening moeten houden met bewoners, huurders of openingstijden.",
+          p2: "Bent u verhuurder of beheerder? Vermeld de postcode van het pand en wie toegang kan regelen. Gaat het om een bedrijfspand, beschrijf dan hoe de betreffende ruimte wordt gebruikt."
+        },
+        faq: {
+          label: "Frequently asked questions",
+          h2: "Veelgestelde Vragen over Schimmelverwijdering",
+          items: [
+            {
+              q: "Wat kost het om schimmel te laten verwijderen?",
+              a: "De kosten hangen onder meer af van de omvang, bereikbaarheid, materialen en voorgestelde behandeling. Stuur een beschrijving en foto's voor een eerste gesprek. Is vooraf een inspectie nodig, vraag dan bij het plannen naar de kosten."
+            },
+            {
+              q: "Kunnen jullie de situatie beoordelen met foto's?",
+              a: "Foto's helpen bij een eerste inschatting, maar laten niet altijd verborgen vocht of de volledige omvang van het probleem zien. We bespreken of een inspectie op locatie nodig is."
+            },
+            {
+              q: "Kan schimmel na de behandeling terugkomen?",
+              a: "Dat kan als de omstandigheden die schimmelgroei bevorderen blijven bestaan. Daarom is het belangrijk om ook vocht, ventilatie en eventuele aanvullende werkzaamheden te bespreken."
+            },
+            {
+              q: "Moet ik tijdens de behandeling het pand verlaten?",
+              a: "Dat hangt af van de behandelmethode en de betreffende ruimtes. Vraag vooraf naar voorbereiding, ventilatie en het moment waarop u de ruimte weer mag gebruiken. Bespreek ook de situatie met kinderen en huisdieren."
+            },
+            {
+              q: "Behandelen jullie ook huurwoningen en bedrijfspanden?",
+              a: "Woningeigenaren, verhuurders en bedrijven kunnen een aanvraag doen. Vermeld het type pand, de locatie en de mogelijkheden voor toegang, zodat we de benodigde aanpak kunnen bespreken."
+            },
+            {
+              q: "Is een beoordeling gratis?",
+              a: "Dat hangt af van de locatie en de complexiteit van uw aanvraag. Bespreek vooraf hoe de beoordeling plaatsvindt en of er kosten aan verbonden zijn. Niet ieder bezoek op locatie is gratis."
+            }
+          ]
+        },
+        enquiry: {
+          label: "Final enquiry section",
+          h2: "Waar Wilt u Schimmel Laten Verwijderen?",
+          sub: "Vul hieronder uw gegevens in voor een offerte op maat of om te bespreken of eerst een beoordeling nodig is.",
+          formLabels: {
+            name: "Naam *",
+            phone: "Telefoonnummer *",
+            email: "E-mailadres *",
+            postcode: "Postcode van het pand *",
+            propertyType: "Type pand",
+            propertyOptions: ["Eigen woning", "Huurwoning", "Bedrijfspand", "Anders"],
+            message: "Waar ziet u schimmel? *",
+            messagePlaceholder: "Bijvoorbeeld: schimmel op het plafond van de slaapkamer, sinds twee maanden aanwezig en teruggekomen na het schoonmaken. Vermeld zo mogelijk de geschatte oppervlakte.",
+            photos: "Foto's toevoegen — optioneel",
+            helper: "Vul een telefoonnummer of e-mailadres in, zodat we kunnen reageren. Foto's toevoegen is niet verplicht.",
+            privacy: "We gebruiken uw gegevens om uw aanvraag te behandelen. Lees ons privacybeleid voor meer informatie.",
+            submit: "Vraag een offerte aan",
+            success: "Bedankt. We hebben uw aanvraag over schimmel ontvangen. FreshGuard neemt contact met u op via de opgegeven gegevens."
+          },
+          contactLine: "Liever direct contact? Bel +31 6 25133975 of mail naar info@freshguard.nl.",
+          mobileButtons: { call: "Bel FreshGuard", quote: "Offerte aanvragen" },
+          footer: "FreshGuard B.V. • Bachlaan 5, 1272 EJ Huizen • KVK 95689443 • Privacybeleid"
+        }
+      }
+    };
+
+    function renderPage() {
+      var d = pageData[currentLang];
+
+      // Document title & meta
+      document.title = d.title;
+      document.getElementById('metaDesc').setAttribute('content', d.metaDesc);
+
+      // Nav labels
+      document.getElementById('navProblems').textContent = d.nav.problems;
+      document.getElementById('navService').textContent = d.nav.service;
+      document.getElementById('navProcess').textContent = d.nav.process;
+      document.getElementById('navWho').textContent = d.nav.who;
+      document.getElementById('navFaq').textContent = d.nav.faq;
+      document.getElementById('navCtaBtn').textContent = d.nav.quote;
+
+      // Drawer nav
+      document.getElementById('drawerProblems').textContent = d.nav.problems;
+      document.getElementById('drawerService').textContent = d.nav.service;
+      document.getElementById('drawerProcess').textContent = d.nav.process;
+      document.getElementById('drawerWho').textContent = d.nav.who;
+      document.getElementById('drawerFaq').textContent = d.nav.faq;
+      document.getElementById('drawerEnquiry').textContent = d.nav.quote;
+      document.getElementById('drawerLangBtn').textContent = currentLang === 'en' ? 'Taal wijzigen: NL' : 'Change Language: EN';
+
+      // Lang buttons
+      var nextLang = currentLang === 'en' ? 'NL' : 'EN';
+      document.getElementById('langNavBtn').textContent = nextLang;
+      document.getElementById('fabLang').querySelector('span').textContent = nextLang;
+
+      // Hero
+      document.getElementById('heroEyebrow').textContent = d.hero.eyebrow;
+      document.getElementById('heroH1').textContent = d.hero.h1;
+      document.getElementById('heroP1').textContent = d.hero.p1;
+      document.getElementById('heroP2').textContent = d.hero.p2;
+      document.getElementById('heroPrimaryBtn').textContent = d.hero.primaryBtn;
+      document.getElementById('heroSecondaryBtn').textContent = d.hero.secondaryBtn;
+      document.getElementById('heroSupporting').textContent = d.hero.supporting;
+
+      // Problems Section
+      document.getElementById('problemsLabel').textContent = d.problems.label;
+      document.getElementById('problemsH2').textContent = d.problems.h2;
+      document.getElementById('problemsIntro').textContent = d.problems.intro;
+      document.getElementById('problemsBottomText').textContent = d.problems.bottomText;
+      document.getElementById('problemsCardTitle').textContent = currentLang === 'nl' ? 'Advies nodig?' : 'Need Advice?';
+      document.getElementById('problemsCardBtn').textContent = currentLang === 'nl' ? 'Beschrijf uw situatie' : 'Describe your problem';
+
+      var problemsList = document.getElementById('problemsList');
+      problemsList.innerHTML = '';
+      d.problems.items.forEach(function (item) {
+        var li = document.createElement('li');
+        li.className = 'problem-item';
+        li.innerHTML = '<span class="problem-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>' + item + '</span>';
+        problemsList.appendChild(li);
+      });
+
+      // Service Section (3 Cards)
+      document.getElementById('serviceLabel').textContent = d.service.label;
+      document.getElementById('serviceH2').textContent = d.service.h2;
+      document.getElementById('serviceIntro').textContent = d.service.intro;
+
+      var serviceCards = document.getElementById('serviceCards');
+      serviceCards.innerHTML = '';
+      d.service.cards.forEach(function (card) {
+        var el = document.createElement('article');
+        el.className = 'service-card';
+        el.innerHTML = '<div class="card-num">' + card.num + '</div><h3>' + card.heading + '</h3><p>' + card.text + '</p>';
+        serviceCards.appendChild(el);
+      });
+
+      // Process Section (4 Steps)
+      document.getElementById('processLabel').textContent = d.process.label;
+      document.getElementById('processH2').textContent = d.process.h2;
+
+      var processSteps = document.getElementById('processSteps');
+      processSteps.innerHTML = '';
+      d.process.steps.forEach(function (st) {
+        var el = document.createElement('div');
+        el.className = 'step-card';
+        el.innerHTML = '<div class="step-badge">' + st.badge + '</div><h3>' + st.heading + '</h3><p>' + st.text + '</p>';
+        processSteps.appendChild(el);
+      });
+
+      // Mid CTA
+      document.getElementById('midCtaH2').textContent = d.midCta.h2;
+      document.getElementById('midCtaText').textContent = d.midCta.text;
+      document.getElementById('midCtaBtn').textContent = d.midCta.btn;
+
+      // Who It's For
+      document.getElementById('whoLabel').textContent = d.who.label;
+      document.getElementById('whoH2').textContent = d.who.h2;
+      document.getElementById('whoCard1Label').textContent = currentLang === 'nl' ? 'Particulieren & Bewoners' : 'Homeowners & Occupants';
+      document.getElementById('whoCard2Label').textContent = currentLang === 'nl' ? 'Verhuurders & Bedrijven' : 'Landlords & Commercial';
+      document.getElementById('whoP1').textContent = d.who.p1;
+      document.getElementById('whoP2').textContent = d.who.p2;
+
+      // FAQ
+      document.getElementById('faqLabel').textContent = d.faq.label;
+      document.getElementById('faqH2').textContent = d.faq.h2;
+
+      var faqList = document.getElementById('faqList');
+      faqList.innerHTML = '';
+      d.faq.items.forEach(function (faq, idx) {
+        var el = document.createElement('details');
+        el.className = 'faq-item';
+        if (idx === 0) el.setAttribute('open', '');
+        el.innerHTML = '<summary>' + faq.q + '</summary><div class="faq-answer"><p>' + faq.a + '</p></div>';
+        faqList.appendChild(el);
+      });
+
+      // Final Enquiry Section
+      document.getElementById('enquiryLabel').textContent = d.enquiry.label;
+      document.getElementById('enquiryH2').textContent = d.enquiry.h2;
+      document.getElementById('enquirySub').textContent = d.enquiry.sub;
+      document.getElementById('contactLineText').textContent = d.enquiry.contactLine;
+      document.getElementById('contactDirectHead').textContent = currentLang === 'nl' ? 'Direct contact:' : 'Direct Contact:';
+
+      // Form Labels & Fields
+      var f = d.enquiry.formLabels;
+      document.getElementById('lbl-name').childNodes[0].nodeValue = f.name + '\n            ';
+      document.getElementById('lbl-phone').childNodes[0].nodeValue = f.phone + '\n            ';
+      document.getElementById('lbl-email').childNodes[0].nodeValue = f.email + '\n            ';
+      document.getElementById('lbl-postcode').childNodes[0].nodeValue = f.postcode + '\n            ';
+      document.getElementById('lbl-propertyType').childNodes[0].nodeValue = f.propertyType + '\n            ';
+
+      var selProp = document.getElementById('input-propertyType');
+      selProp.innerHTML = '';
+      f.propertyOptions.forEach(function (opt) {
+        var o = document.createElement('option');
+        o.value = opt;
+        o.textContent = opt;
+        selProp.appendChild(o);
+      });
+
+      document.getElementById('lbl-message').childNodes[0].nodeValue = f.message + '\n            ';
+      document.getElementById('input-message').placeholder = f.messagePlaceholder;
+      document.getElementById('uploadLabel').textContent = f.photos;
+      document.getElementById('formHelper').textContent = f.helper;
+      document.getElementById('privacyText').textContent = f.privacy;
+      document.getElementById('submitBtn').textContent = f.submit;
+      document.getElementById('successMessage').textContent = f.success;
+
+      // Mobile Bar
+      document.getElementById('mobileCallBtn').textContent = d.enquiry.mobileButtons.call;
+      document.getElementById('mobileQuoteBtn').textContent = d.enquiry.mobileButtons.quote;
+
+      // Footer
+      document.getElementById('footerText').textContent = d.enquiry.footer;
+      document.getElementById('footLink1').textContent = d.nav.problems;
+      document.getElementById('footLink2').textContent = d.nav.service;
+      document.getElementById('footLink3').textContent = d.nav.process;
+      document.getElementById('footLink4').textContent = d.nav.faq;
+      document.getElementById('footLink5').textContent = currentLang === 'nl' ? 'Contact' : 'Contact';
+
+      // Trigger animation
+      triggerAnimations();
+    }
+
+    function toggleLang() {
+      currentLang = currentLang === 'en' ? 'nl' : 'en';
+      renderPage();
+    }
+
+    function closeDrawer() {
+      var drawer = document.getElementById('drawer');
+      if (drawer) drawer.classList.remove('open');
+    }
+
+    function triggerAnimations() {
+      var elements = document.querySelectorAll('.fx');
+      elements.forEach(function (el) {
+        el.classList.remove('in');
+      });
+      setTimeout(function () {
+        elements.forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+            el.classList.add('in');
+          }
+        });
+      }, 50);
+    }
+
+    // Interactive behaviors
+    document.addEventListener('DOMContentLoaded', function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('lang') === 'nl') currentLang = 'nl';
+
+      renderPage();
+
+      document.body.classList.add('is-ready');
+
+      // Drawer open/close
+      var menuBtn = document.getElementById('menuBtn');
+      var closeMenu = document.getElementById('closeMenu');
+      var drawer = document.getElementById('drawer');
+      if (menuBtn && drawer) {
+        menuBtn.onclick = function () { drawer.classList.add('open'); };
+      }
+      if (closeMenu && drawer) {
+        closeMenu.onclick = function () { drawer.classList.remove('open'); };
+      }
+
+      // Photos upload preview
+      var uploadBox = document.getElementById('uploadBox');
+      var photosInput = document.getElementById('photosInput');
+      var fileNames = document.getElementById('fileNames');
+      if (uploadBox && photosInput) {
+        uploadBox.onclick = function () { photosInput.click(); };
+        photosInput.onchange = function (e) {
+          var files = Array.prototype.map.call(e.target.files || [], function (f) { return f.name; });
+          fileNames.textContent = files.length > 0 ? files.join(', ') : '';
+        };
+      }
+
+      // Form submission
+      var form = document.getElementById('enquiryForm');
+      var formOk = document.getElementById('formOk');
+      if (form) {
+        form.onsubmit = function (e) {
+          e.preventDefault();
+          formOk.style.display = 'block';
+          formOk.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          form.reset();
+          if (fileNames) fileNames.textContent = '';
+        };
+      }
+
+      // Scroll nav & back to top
+      var nav = document.querySelector('.nav');
+      var backTop = document.getElementById('backTop');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 20) {
+          nav.classList.add('is-scrolled');
+        } else {
+          nav.classList.remove('is-scrolled');
+        }
+        if (window.scrollY > 300) {
+          backTop.classList.add('is-visible');
+        } else {
+          backTop.classList.remove('is-visible');
+        }
+
+        document.querySelectorAll('.fx:not(.in)').forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+            el.classList.add('in');
+          }
+        });
+      }, { passive: true });
+
+      if (backTop) {
+        backTop.onclick = function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+      }
+    });
+9  </script>
+</body>
+</html>
