@@ -402,14 +402,30 @@
     .problem-note-card p { font-size: 15px; }
 
     /* SERVICE OVERVIEW (3 CARDS) */
-    .service-sec { background: var(--white); }
+    .service-sec {
+      position: relative;
+      background: url("img1.jfif") center/cover no-repeat;
+      overflow: hidden;
+    }
+    .service-sec::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(246, 250, 241, 0.88) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .service-sec .shell {
+      position: relative;
+      z-index: 1;
+    }
     .cards-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
     .service-card {
-      background: var(--fog);
+      background: rgba(255, 255, 255, 0.92);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 32px 26px;
@@ -417,12 +433,16 @@
       flex-direction: column;
       position: relative;
       overflow: hidden;
-      transition: transform .35s var(--fx-ease), box-shadow .35s ease, border-color .35s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(2,22,25,0.05);
+      transition: transform .35s var(--fx-ease), box-shadow .35s ease, border-color .35s ease, background .3s ease;
     }
     .service-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(2,22,25,0.08);
+      box-shadow: 0 20px 40px rgba(2,22,25,0.12);
       border-color: var(--aqua);
+      background: #ffffff;
     }
     .service-card::before {
       content: ""; position: absolute; left: 0; top: 0; right: 0; height: 4px;
