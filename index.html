@@ -105,9 +105,10 @@
       letter-spacing: -0.03em;
     }
     .logo-img {
-      height: 42px;
+      height: 48px;
       width: auto;
-      max-height: 44px;
+      max-height: 52px;
+      max-width: 220px;
       object-fit: contain;
       display: block;
       flex-shrink: 0;
@@ -933,7 +934,7 @@
     .fx.in { opacity: 1; transform: none; }
 
     @media (max-width: 980px) {
-      :root { --nav: 64px; --pad: 20px; }
+      :root { --nav: 70px; --pad: 18px; }
       .nav-row {
         display: flex;
         justify-content: space-between;
@@ -944,9 +945,10 @@
         flex: 0 0 auto;
       }
       .logo-img {
-        height: 38px;
+        height: 48px;
         width: auto;
-        max-width: 165px;
+        max-height: 50px;
+        max-width: 210px;
         object-fit: contain;
       }
       .nav-links { display: none; }
@@ -957,12 +959,13 @@
       }
       .menu { display: inline-flex; align-items: center; justify-content: center; }
       .drawer .logo-img {
-        height: 38px;
+        height: 48px;
         width: auto;
-        max-width: 160px;
+        max-height: 50px;
+        max-width: 210px;
         background: #ffffff;
-        padding: 5px 12px;
-        border-radius: 10px;
+        padding: 6px 14px;
+        border-radius: 12px;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
       }
       .problems-grid, .cards-grid-3, .steps-grid, .who-grid, .contact-grid {
@@ -993,15 +996,19 @@
     }
 
     @media (max-width: 700px) {
-      :root { --pad: 16px; }
+      :root { --nav: 68px; --pad: 16px; }
       .logo-img {
-        height: 34px;
-        max-width: 140px;
+        height: 44px;
+        width: auto;
+        max-height: 46px;
+        max-width: 190px;
       }
       .drawer .logo-img {
-        height: 34px;
-        max-width: 140px;
-        padding: 4px 10px;
+        height: 44px;
+        width: auto;
+        max-height: 46px;
+        max-width: 190px;
+        padding: 5px 12px;
       }
       .hero { min-height: 100svh; min-height: 100vh; }
       .hero-bg { object-position: 80% 18%; }
