@@ -104,6 +104,13 @@
       color: var(--ink);
       letter-spacing: -0.03em;
     }
+    .logo-img {
+      height: 42px;
+      width: auto;
+      max-height: 44px;
+      object-fit: contain;
+      display: block;
+    }
     .logo svg { height: 36px; width: auto; color: var(--aqua-strong); }
     .logo span em { font-style: normal; color: var(--aqua-strong); }
     
@@ -239,7 +246,7 @@
     .hero-bg {
       position: absolute; inset: 0;
       width: 100%; height: 100%; object-fit: cover;
-      object-position: center center;
+      object-position: 70% center;
       transform: scale(1.05);
       transition: transform 1.6s var(--ease);
       z-index: 0;
@@ -407,9 +414,28 @@
       background: url("img1.jfif") center/cover no-repeat;
       overflow: hidden;
     }
+    .service-sec::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 22, 25, 0.6);
+      z-index: 0;
+      pointer-events: none;
+    }
     .service-sec .shell {
       position: relative;
       z-index: 1;
+    }
+    .service-sec .section-head .label {
+      color: #bbf765;
+    }
+    .service-sec .section-head h2 {
+      color: #ffffff;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+    }
+    .service-sec .section-head p {
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
     }
     .cards-grid-3 {
       display: grid;
@@ -483,17 +509,26 @@
 
     /* MID-PAGE CTA BANNER */
     .mid-cta {
-      background: linear-gradient(135deg, #021619 0%, #062d36 100%);
+      background: url("img2.jfif") center/cover no-repeat;
       color: #fff;
-      padding: clamp(48px, 6vw, 72px) 0;
+      padding: clamp(64px, 8vw, 96px) 0;
       text-align: center;
       position: relative;
       overflow: hidden;
+    }
+    .mid-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(2, 22, 25, 0.82) 0%, rgba(6, 45, 54, 0.76) 100%);
+      z-index: 0;
+      pointer-events: none;
     }
     .mid-cta::after {
       content: "";
       position: absolute; inset: 0;
       background: radial-gradient(circle at 50% 50%, rgba(143,198,64,0.18) 0%, transparent 70%);
+      z-index: 0;
       pointer-events: none;
     }
     .mid-cta-inner {
@@ -501,11 +536,20 @@
       max-width: 640px;
       margin: 0 auto;
       display: grid;
-      gap: 16px;
+      gap: 18px;
       justify-items: center;
     }
-    .mid-cta h2 { color: #fff; font-size: clamp(28px, 3.8vw, 40px); }
-    .mid-cta p { color: rgba(255,255,255,0.85); font-size: 17px; max-width: 48ch; }
+    .mid-cta h2 {
+      color: #fff;
+      font-size: clamp(28px, 3.8vw, 40px);
+      text-shadow: 0 2px 14px rgba(0,0,0,0.5);
+    }
+    .mid-cta p {
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 17px;
+      max-width: 48ch;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+    }
 
     /* WHO IT'S FOR */
     .who-sec { background: var(--white); }
@@ -527,7 +571,31 @@
     .who-card p { font-size: 15px; line-height: 1.65; }
 
     /* FAQ ACCORDION */
-    .faq-sec { background: var(--fog); border-top: 1px solid var(--line); }
+    .faq-sec {
+      position: relative;
+      background: url("img3.jfif") center/cover no-repeat;
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .faq-sec::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 22, 25, 0.65);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .faq-sec .shell {
+      position: relative;
+      z-index: 1;
+    }
+    .faq-sec .section-head .label {
+      color: #bbf765;
+    }
+    .faq-sec .section-head h2 {
+      color: #ffffff;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+    }
     .faq-list {
       display: grid;
       gap: 12px;
@@ -535,15 +603,19 @@
       margin: 0 auto;
     }
     .faq-item {
-      background: var(--white);
-      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 14px;
       overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(2,22,25,0.12);
       transition: all .25s ease;
     }
     .faq-item:hover, .faq-item[open] {
       border-color: var(--aqua);
-      box-shadow: 0 8px 24px rgba(2,22,25,0.06);
+      background: #ffffff;
+      box-shadow: 0 12px 30px rgba(2,22,25,0.18);
     }
     .faq-item summary {
       padding: 20px 24px;
@@ -586,8 +658,32 @@
       background: linear-gradient(180deg, #f6faf1 0%, #ffffff 100%);
       border-top: 1px solid var(--line);
       scroll-margin-top: calc(var(--nav) + 12px);
+      overflow: hidden;
+      perspective: 1200px;
+    }
+    .contact-parallax-blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(60px);
+      opacity: 0.55;
+      z-index: 0;
+      transition: transform 0.15s cubic-bezier(.22, 1, .36, 1);
+      will-change: transform;
+    }
+    .blob-1 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(143, 198, 64, 0.38) 0%, rgba(143, 198, 64, 0) 70%);
+      top: -40px; right: -60px;
+    }
+    .blob-2 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(6, 45, 54, 0.15) 0%, rgba(6, 45, 54, 0) 70%);
+      bottom: -100px; left: -120px;
     }
     .contact-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
       gap: clamp(28px, 5vw, 56px);
@@ -616,12 +712,61 @@
     }
     .contact-meta span { color: var(--muted); font-size: 14px; font-weight: 600; }
     
+    .form-card-wrap {
+      position: relative;
+      perspective: 1200px;
+      will-change: transform;
+    }
     .form-card {
-      background: var(--white);
-      border: 1px solid var(--aqua);
+      position: relative;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(143, 198, 64, 0.45);
       border-radius: 22px;
       padding: clamp(24px, 3.5vw, 36px);
-      box-shadow: 0 18px 45px rgba(2,22,25,.07);
+      box-shadow: 0 20px 50px rgba(2, 22, 25, .08), 0 2px 8px rgba(2, 22, 25, .04);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transform-style: preserve-3d;
+      transition: transform 0.22s cubic-bezier(.22, 1, .36, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+      will-change: transform;
+    }
+    .form-card:hover {
+      box-shadow: 0 30px 65px rgba(2, 22, 25, .12), 0 0 25px rgba(143, 198, 64, 0.25);
+      border-color: var(--aqua);
+    }
+    .form-floating-badge {
+      position: absolute;
+      top: -14px;
+      right: 22px;
+      background: var(--ink);
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(2, 22, 25, 0.22);
+      border: 1px solid rgba(143, 198, 64, 0.5);
+      z-index: 5;
+      pointer-events: none;
+      transform: translateZ(30px);
+      transition: transform 0.22s cubic-bezier(.22, 1, .36, 1);
+    }
+    .form-floating-badge .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--aqua);
+      display: inline-block;
+      box-shadow: 0 0 8px var(--aqua);
+      animation: badgePulse 2s infinite;
+    }
+    @keyframes badgePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.25); }
     }
     form {
       display: grid;
@@ -794,13 +939,34 @@
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .hero { min-height: auto; padding-top: calc(var(--nav) + 20px); }
-      .hero-inner { padding: 24px 0 48px; }
+      .hero {
+        min-height: 100svh;
+        min-height: 100vh;
+        padding-top: calc(var(--nav) + 24px);
+        padding-bottom: 40px;
+        display: flex;
+        align-items: center;
+      }
+      .hero-bg {
+        object-position: 78% 22%;
+      }
+      .hero::after {
+        background:
+          linear-gradient(180deg, rgba(2,22,25,.75) 0%, rgba(2,22,25,.46) 45%, rgba(2,22,25,.80) 100%),
+          linear-gradient(90deg, rgba(2,22,25,.60) 0%, rgba(2,22,25,.20) 100%);
+      }
+      .hero-inner { padding: 24px 0 32px; }
       .phone { display: none; }
+      .form-card { transform: none !important; }
+      .form-card-wrap { transform: none !important; perspective: none; }
+      .contact-parallax-blob { opacity: 0.3; }
     }
 
     @media (max-width: 700px) {
       :root { --pad: 16px; }
+      .hero { min-height: 100svh; min-height: 100vh; }
+      .hero-bg { object-position: 80% 18%; }
+      .hero-inner { padding: 18px 0 36px; }
       .hero-actions { flex-direction: column; }
       .hero-actions .btn { width: 100%; }
       form { grid-template-columns: 1fr; }
@@ -834,8 +1000,7 @@
   <header class="nav">
     <div class="nav-row">
       <a class="logo" href="#hero" aria-label="FreshGuard">
-        <svg viewBox="0 0 40 40" fill="none"><path d="M20 4C10 8 4 18 4 28c8-1 18-9 24-22 1 9-1 18-8 24 12-5 18-15 10-26z" fill="currentColor"/><path d="M10 26c6-5 13-14 16-22" stroke="#021619" stroke-width="2" opacity=".3"/></svg>
-        <span>Fresh<em>Guard</em></span>
+        <img class="logo-img" src="https://backend.freshguard.nl/assets/ad051085-a0b8-416a-af8d-76220dfc087b" alt="FreshGuard" />
       </a>
 
       <div class="nav-links">
@@ -858,10 +1023,9 @@
   <!-- Mobile Drawer -->
   <div class="drawer" id="drawer">
     <div class="drawer-top">
-      <div class="logo" style="color: #fff;">
-        <svg viewBox="0 0 40 40" fill="none" style="height:32px; color:var(--aqua);"><path d="M20 4C10 8 4 18 4 28c8-1 18-9 24-22 1 9-1 18-8 24 12-5 18-15 10-26z" fill="currentColor"/></svg>
-        <span>Fresh<em>Guard</em></span>
-      </div>
+      <a class="logo" href="#hero" onclick="closeDrawer()" aria-label="FreshGuard">
+        <img class="logo-img" src="https://backend.freshguard.nl/assets/ad051085-a0b8-416a-af8d-76220dfc087b" alt="FreshGuard" />
+      </a>
       <button type="button" class="close-btn" id="closeMenu">Close</button>
     </div>
 
@@ -1094,6 +1258,8 @@
 
   <!-- FINAL ENQUIRY / CONTACT SECTION -->
   <section class="contact-sec" id="enquiry">
+    <div class="contact-parallax-blob blob-1" aria-hidden="true"></div>
+    <div class="contact-parallax-blob blob-2" aria-hidden="true"></div>
     <div class="shell contact-grid">
       <div class="contact-copy fx">
         <div class="label" id="enquiryLabel">Final enquiry section</div>
@@ -1110,54 +1276,60 @@
         </div>
       </div>
 
-      <div class="form-card fx" style="--d:1">
-        <form id="enquiryForm">
-          <label class="full" id="lbl-name">Name *
-            <input type="text" name="name" id="input-name" required />
-          </label>
+      <div class="form-card-wrap fx" style="--d:1">
+        <div class="form-floating-badge" id="formBadge">
+          <span class="badge-dot"></span>
+          <span id="formBadgeText">Direct Quote Assessment</span>
+        </div>
+        <div class="form-card">
+          <form id="enquiryForm">
+            <label class="full" id="lbl-name">Name *
+              <input type="text" name="name" id="input-name" required />
+            </label>
 
-          <label id="lbl-phone">Phone number *
-            <input type="tel" name="phone" id="input-phone" required />
-          </label>
+            <label id="lbl-phone">Phone number *
+              <input type="tel" name="phone" id="input-phone" required />
+            </label>
 
-          <label id="lbl-email">Email address *
-            <input type="email" name="email" id="input-email" required />
-          </label>
+            <label id="lbl-email">Email address *
+              <input type="email" name="email" id="input-email" required />
+            </label>
 
-          <label id="lbl-postcode">Property postcode *
-            <input type="text" name="postcode" id="input-postcode" required />
-          </label>
+            <label id="lbl-postcode">Property postcode *
+              <input type="text" name="postcode" id="input-postcode" required />
+            </label>
 
-          <label id="lbl-propertyType">Property type
-            <select name="propertyType" id="input-propertyType">
-              <option value="Home">Home</option>
-              <option value="Rental property">Rental property</option>
-              <option value="Business premises">Business premises</option>
-              <option value="Other">Other</option>
-            </select>
-          </label>
+            <label id="lbl-propertyType">Property type
+              <select name="propertyType" id="input-propertyType">
+                <option value="Home">Home</option>
+                <option value="Rental property">Rental property</option>
+                <option value="Business premises">Business premises</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
 
-          <label class="full" id="lbl-message">Where have you noticed mould? *
-            <textarea name="message" id="input-message" placeholder="For example: mould on the bedroom ceiling, present for two months and returning after cleaning. Please include the approximate affected area if known." required></textarea>
-          </label>
+            <label class="full" id="lbl-message">Where have you noticed mould? *
+              <textarea name="message" id="input-message" placeholder="For example: mould on the bedroom ceiling, present for two months and returning after cleaning. Please include the approximate affected area if known." required></textarea>
+            </label>
 
-          <div class="upload full" id="uploadBox">
-            <span id="uploadLabel">Add photos — optional</span>
-            <input type="file" id="photosInput" accept="image/*" multiple hidden />
-            <div id="fileNames" class="fine" style="margin-top:6px; color:var(--aqua-strong); font-weight:600;"></div>
-          </div>
+            <div class="upload full" id="uploadBox">
+              <span id="uploadLabel">Add photos — optional</span>
+              <input type="file" id="photosInput" accept="image/*" multiple hidden />
+              <div id="fileNames" class="fine" style="margin-top:6px; color:var(--aqua-strong); font-weight:600;"></div>
+            </div>
 
-          <p class="fine full" id="formHelper">Please provide a phone number or email address so we can respond. Photos are optional.</p>
-          <p class="fine full" id="privacyText">We use the information you submit to handle your enquiry. Read our Privacy Policy for details.</p>
+            <p class="fine full" id="formHelper">Please provide a phone number or email address so we can respond. Photos are optional.</p>
+            <p class="fine full" id="privacyText">We use the information you submit to handle your enquiry. Read our Privacy Policy for details.</p>
 
-          <div class="form-bottom full">
-            <button class="btn btn-aqua" type="submit" id="submitBtn">Request a Mould Treatment Quote</button>
-          </div>
+            <div class="form-bottom full">
+              <button class="btn btn-aqua" type="submit" id="submitBtn">Request a Mould Treatment Quote</button>
+            </div>
 
-          <div id="formOk" class="full">
-            <p id="successMessage">Thank you. Your mould enquiry has been received. FreshGuard will contact you using the details provided.</p>
-          </div>
-        </form>
+            <div id="formOk" class="full">
+              <p id="successMessage">Thank you. Your mould enquiry has been received. FreshGuard will contact you using the details provided.</p>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -1166,9 +1338,8 @@
   <footer>
     <div class="shell">
       <div class="foot-top">
-        <a class="logo" href="#hero" style="color:#fff;">
-          <svg viewBox="0 0 40 40" fill="none" style="height:32px; color:var(--aqua);"><path d="M20 4C10 8 4 18 4 28c8-1 18-9 24-22 1 9-1 18-8 24 12-5 18-15 10-26z" fill="currentColor"/></svg>
-          <span>Fresh<em>Guard</em></span>
+        <a class="logo" href="#hero" aria-label="FreshGuard">
+          <img class="logo-img" src="https://backend.freshguard.nl/assets/ad051085-a0b8-416a-af8d-76220dfc087b" alt="FreshGuard" />
         </a>
         <div class="foot-links">
           <a href="#problems" id="footLink1">Problems</a>
@@ -1343,6 +1514,7 @@
             submit: "Request a Mould Treatment Quote",
             success: "Thank you. Your mould enquiry has been received. FreshGuard will contact you using the details provided."
           },
+          badge: "Direct Quote Assessment",
           contactLine: "Prefer to speak to us? Call +31 6 25133975 or email info@freshguard.nl.",
           mobileButtons: { call: "Call FreshGuard", quote: "Request a Quote" },
           footer: "FreshGuard B.V. • Bachlaan 5, 1272 EJ Huizen • KVK 95689443 • Privacy Policy"
@@ -1467,6 +1639,7 @@
           label: "Final enquiry section",
           h2: "Waar Wilt u Schimmel Laten Verwijderen?",
           sub: "Vul hieronder uw gegevens in voor een offerte op maat of om te bespreken of eerst een beoordeling nodig is.",
+          badge: "Directe offertebeoordeling",
           formLabels: {
             name: "Naam *",
             phone: "Telefoonnummer *",
@@ -1604,6 +1777,10 @@
       document.getElementById('enquirySub').textContent = d.enquiry.sub;
       document.getElementById('contactLineText').textContent = d.enquiry.contactLine;
       document.getElementById('contactDirectHead').textContent = currentLang === 'nl' ? 'Direct contact:' : 'Direct Contact:';
+      var formBadgeEl = document.getElementById('formBadgeText');
+      if (formBadgeEl && d.enquiry.badge) {
+        formBadgeEl.textContent = d.enquiry.badge;
+      }
 
       // Form Labels & Fields
       var f = d.enquiry.formLabels;
@@ -1715,7 +1892,51 @@
         };
       }
 
-      // Scroll nav & back to top
+      // Parallax Effect for Form and Enquiry Section
+      var contactSec = document.getElementById('enquiry');
+      var formCard = document.querySelector('.form-card');
+      var blob1 = document.querySelector('.blob-1');
+      var blob2 = document.querySelector('.blob-2');
+      var formBadge = document.getElementById('formBadge');
+      var isMouseActive = false;
+
+      if (contactSec && formCard && window.innerWidth > 980) {
+        contactSec.addEventListener('mouseenter', function () {
+          isMouseActive = true;
+        });
+
+        contactSec.addEventListener('mousemove', function (e) {
+          if (window.innerWidth <= 980) return;
+          var rect = contactSec.getBoundingClientRect();
+          var mouseX = e.clientX - rect.left - (rect.width / 2);
+          var mouseY = e.clientY - rect.top - (rect.height / 2);
+
+          var rotX = -(mouseY / rect.height) * 10;
+          var rotY = (mouseX / rect.width) * 12;
+
+          formCard.style.transform = 'perspective(1200px) rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg) translateZ(8px)';
+
+          if (blob1) {
+            blob1.style.transform = 'translate3d(' + (mouseX * 0.06).toFixed(1) + 'px, ' + (mouseY * 0.06).toFixed(1) + 'px, 0)';
+          }
+          if (blob2) {
+            blob2.style.transform = 'translate3d(' + (-mouseX * 0.05).toFixed(1) + 'px, ' + (-mouseY * 0.05).toFixed(1) + 'px, 0)';
+          }
+          if (formBadge) {
+            formBadge.style.transform = 'translateZ(30px) translate3d(' + (mouseX * 0.02).toFixed(1) + 'px, ' + (mouseY * 0.02).toFixed(1) + 'px, 0)';
+          }
+        });
+
+        contactSec.addEventListener('mouseleave', function () {
+          isMouseActive = false;
+          formCard.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateZ(0)';
+          if (blob1) blob1.style.transform = 'none';
+          if (blob2) blob2.style.transform = 'none';
+          if (formBadge) formBadge.style.transform = 'translateZ(30px)';
+        });
+      }
+
+      // Scroll Parallax & Scroll nav / back to top
       var nav = document.querySelector('.nav');
       var backTop = document.getElementById('backTop');
       window.addEventListener('scroll', function () {
@@ -1728,6 +1949,20 @@
           backTop.classList.add('is-visible');
         } else {
           backTop.classList.remove('is-visible');
+        }
+
+        // Scroll parallax calculation for form section on larger screens
+        if (contactSec && formCard && !isMouseActive && window.innerWidth > 980) {
+          var rect = contactSec.getBoundingClientRect();
+          var winH = window.innerHeight;
+          if (rect.top < winH && rect.bottom > 0) {
+            var scrollProgress = (winH - rect.top) / (winH + rect.height) - 0.5;
+            var offsetFormY = scrollProgress * -20;
+            var offsetBlobY = scrollProgress * 45;
+            formCard.style.transform = 'perspective(1200px) translateY(' + offsetFormY.toFixed(1) + 'px)';
+            if (blob1) blob1.style.transform = 'translate3d(0, ' + offsetBlobY.toFixed(1) + 'px, 0)';
+            if (blob2) blob2.style.transform = 'translate3d(0, ' + (-offsetBlobY).toFixed(1) + 'px, 0)';
+          }
         }
 
         document.querySelectorAll('.fx:not(.in)').forEach(function (el) {
@@ -1743,6 +1978,6 @@
         };
       }
     });
-9  </script>
+  </script>
 </body>
 </html>
