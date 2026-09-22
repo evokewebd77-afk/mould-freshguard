@@ -344,6 +344,98 @@
       font-weight: 600;
     }
 
+    /* TRUST & ACCREDITATION BAR */
+    .trust-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+      position: relative;
+      z-index: 10;
+    }
+    .trust-bar-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 540px;
+    }
+    .trust-badge-icon {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    .trust-badge-text {
+      font-size: 14px;
+      line-height: 1.35;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .trust-badge-sub {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .trust-logos-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .trust-logos-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .trust-logos-list {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .trust-logo-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 18px;
+      background: var(--fog);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      transition: all 0.25s ease;
+      height: 52px;
+    }
+    .trust-logo-card:hover {
+      border-color: var(--aqua);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(2, 22, 25, 0.08);
+      background: #ffffff;
+    }
+    .trust-logo-img {
+      max-height: 36px;
+      max-width: 140px;
+      object-fit: contain;
+      filter: contrast(1.05);
+    }
+    @media (max-width: 860px) {
+      .trust-bar-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .trust-logos-wrap {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
     /* SECTION BASE */
     section { padding: clamp(64px, 8vw, 96px) 0; }
     .section-head {
@@ -1116,6 +1208,33 @@
     </div>
   </section>
 
+  <!-- TRUST & ACCREDITATION BAR -->
+  <section class="trust-bar" id="accreditations" aria-label="Accreditations and Certifications">
+    <div class="shell-wide">
+      <div class="trust-bar-wrap">
+        <div class="trust-badge-group">
+          <img class="trust-badge-icon" src="https://backend.freshguard.nl/assets/53108db8-3820-4b67-bb16-990598166938" alt="FreshGuard Verified Specialist" />
+          <div>
+            <div class="trust-badge-text" id="trustbarHeading">Accredited Advanced Mold Remediation & Moisture Control Specialists</div>
+            <div class="trust-badge-sub" id="trustbarSub">Certified professional protocols & compliance across the Netherlands</div>
+          </div>
+        </div>
+
+        <div class="trust-logos-wrap">
+          <span class="trust-logos-title" id="trustbarLogosLabel">Verified Certifications:</span>
+          <div class="trust-logos-list">
+            <a class="trust-logo-card" href="https://www.cityandguilds.com" target="_blank" rel="noopener noreferrer" title="City & Guilds Accredited">
+              <img class="trust-logo-img" src="https://backend.freshguard.nl/assets/27bb4b81-7530-4fe6-add4-60c18844a318" alt="City & Guilds Accredited" />
+            </a>
+            <a class="trust-logo-card" href="https://dewpointprofessional.co.uk" target="_blank" rel="noopener noreferrer" title="Dewpoint Professional Certified">
+              <img class="trust-logo-img" src="https://backend.freshguard.nl/assets/497eabe2-a102-4c73-a60c-a9e392711623" alt="Dewpoint Professional Certified" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROBLEMS WE HELP ASSESS -->
   <section class="problems-sec" id="problems">
     <div class="shell">
@@ -1439,6 +1558,11 @@
           secondaryBtn: "Call FreshGuard",
           supporting: "Property-specific assessment • Treatment options explained • Advice on reducing recurrence"
         },
+        trustbar: {
+          heading: "Accredited Advanced Mold Remediation & Moisture Control Specialists",
+          sub: "Certified professional protocols & compliance across the Netherlands",
+          label: "Verified Certifications:"
+        },
         problems: {
           label: "Problems we help assess",
           h2: "Get Help With Mold That Keeps Coming Back",
@@ -1578,6 +1702,11 @@
           primaryBtn: "Vraag een offerte aan",
           secondaryBtn: "Bel FreshGuard",
           supporting: "Beoordeling van uw situatie • Uitleg over de behandeling • Advies om terugkeer te beperken"
+        },
+        trustbar: {
+          heading: "Geaccrediteerde specialisten in geavanceerde schimmelsanering en vochtbestrijding",
+          sub: "Gecertificeerde professionele protocollen en standaarden in heel Nederland",
+          label: "Geverifieerde Certificeringen:"
         },
         problems: {
           label: "Problems we help assess",
@@ -1745,6 +1874,16 @@
       document.getElementById('heroPrimaryBtn').textContent = d.hero.primaryBtn;
       document.getElementById('heroSecondaryBtn').textContent = d.hero.secondaryBtn;
       document.getElementById('heroSupporting').textContent = d.hero.supporting;
+
+      // Trust & Accreditation Bar
+      if (d.trustbar) {
+        var tbHeading = document.getElementById('trustbarHeading');
+        var tbSub = document.getElementById('trustbarSub');
+        var tbLabel = document.getElementById('trustbarLogosLabel');
+        if (tbHeading) tbHeading.textContent = d.trustbar.heading;
+        if (tbSub) tbSub.textContent = d.trustbar.sub;
+        if (tbLabel) tbLabel.textContent = d.trustbar.label;
+      }
 
       // Problems Section
       document.getElementById('problemsLabel').textContent = d.problems.label;
