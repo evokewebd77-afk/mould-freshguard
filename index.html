@@ -147,23 +147,73 @@
     }
     .phone:hover { color: var(--aqua-strong); }
     
-    .lang-btn {
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--fog);
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      padding: 3px;
+      gap: 3px;
+      box-shadow: 0 2px 6px rgba(2, 22, 25, 0.04);
+    }
+    .lang-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.22s var(--fx-spring);
+    }
+    .lang-tab:hover {
+      color: var(--ink);
+    }
+    .lang-tab.active {
+      background: #ffffff;
+      color: var(--ink);
+      box-shadow: 0 2px 10px rgba(2, 22, 25, 0.12);
+    }
+    .flag-icon {
+      width: 18px;
+      height: 13px;
+      display: inline-block;
+      border-radius: 2px;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+    .drawer-lang-tabs {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+    .drawer-lang-tab {
+      flex: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--fog);
-      border: 1px solid var(--line-strong);
-      padding: 6px 14px;
-      border-radius: 999px;
+      gap: 8px;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1.5px solid var(--line);
+      background: #ffffff;
       font-size: 13px;
       font-weight: 700;
       color: var(--ink);
       cursor: pointer;
-      transition: all .2s ease;
+      transition: all 0.2s ease;
     }
-    .lang-btn:hover {
-      background: var(--ink);
-      color: #fff;
+    .drawer-lang-tab.active {
+      border-color: var(--aqua-strong);
+      background: var(--fog);
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(143, 198, 64, 0.2);
     }
 
     .menu {
@@ -1288,7 +1338,16 @@
 
       <div class="nav-right">
         <a class="phone" href="tel:+31625133975">+31 6 25133975</a>
-        <button type="button" class="lang-btn" id="langNavBtn" onclick="toggleLang()">NL</button>
+        <div class="lang-switcher" id="navLangSwitcher" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-tab active" id="langTabEn" onclick="setLang('en')" title="English">
+            <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 240l240 178v62h-80L320 301 81 480H0v-60l239-180L0 64V0h75z"/><path fill="#C8102E" d="m424 288 216 158v34h-46L378 300l46-12zM640 34 426 191l46 14L640 76V34zM0 446l214-157-46-14L0 404v42zm0-412 216 158-46 12L0 44V34z"/><path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/><path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z"/></svg>
+            <span>EN</span>
+          </button>
+          <button type="button" class="lang-tab" id="langTabNl" onclick="setLang('nl')" title="Nederlands">
+            <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true"><path fill="#21468B" d="M0 0h640v480H0z"/><path fill="#FFF" d="M0 0h640v320H0z"/><path fill="#AE1C28" d="M0 0h640v160H0z"/></svg>
+            <span>NL</span>
+          </button>
+        </div>
         <a class="btn btn-aqua" href="#enquiry" id="navCtaBtn" style="min-height: 42px; padding: 0 18px; font-size: 13px;">Request Quote</a>
         <button class="menu" id="menuBtn" aria-label="Open Menu">☰</button>
       </div>
@@ -1311,9 +1370,18 @@
     <a href="#faq" onclick="closeDrawer()" id="drawerFaq">FAQ</a>
     <a href="#enquiry" onclick="closeDrawer()" id="drawerEnquiry">Request a Quote</a>
 
-    <div style="margin-top: auto; padding-top: 20px; display: flex; gap: 10px; align-items: center;">
-      <button type="button" class="lang-btn" onclick="toggleLang(); closeDrawer();" id="drawerLangBtn" style="flex:1; padding: 12px;">Switch Language: NL</button>
-      <a class="btn btn-aqua" href="tel:+31625133975" style="flex:1; min-height: 44px; font-size: 13px;">Call FreshGuard</a>
+    <div style="margin-top: auto; padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+      <div class="drawer-lang-tabs">
+        <button type="button" class="drawer-lang-tab active" id="drawerTabEn" onclick="setLang('en'); closeDrawer();">
+          <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 240l240 178v62h-80L320 301 81 480H0v-60l239-180L0 64V0h75z"/><path fill="#C8102E" d="m424 288 216 158v34h-46L378 300l46-12zM640 34 426 191l46 14L640 76V34zM0 446l214-157-46-14L0 404v42zm0-412 216 158-46 12L0 44V34z"/><path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/><path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z"/></svg>
+          <span>English</span>
+        </button>
+        <button type="button" class="drawer-lang-tab" id="drawerTabNl" onclick="setLang('nl'); closeDrawer();">
+          <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true"><path fill="#21468B" d="M0 0h640v480H0z"/><path fill="#FFF" d="M0 0h640v320H0z"/><path fill="#AE1C28" d="M0 0h640v160H0z"/></svg>
+          <span>Nederlands</span>
+        </button>
+      </div>
+      <a class="btn btn-aqua" href="tel:+31625133975" style="width: 100%; min-height: 44px; font-size: 13px;">Call FreshGuard</a>
     </div>
   </div>
 
@@ -2062,12 +2130,40 @@
       document.getElementById('drawerWho').textContent = d.nav.who;
       document.getElementById('drawerFaq').textContent = d.nav.faq;
       document.getElementById('drawerEnquiry').textContent = d.nav.quote;
-      document.getElementById('drawerLangBtn').textContent = currentLang === 'en' ? 'Taal wijzigen: NL' : 'Change Language: EN';
 
-      // Lang buttons
-      var nextLang = currentLang === 'en' ? 'NL' : 'EN';
-      document.getElementById('langNavBtn').textContent = nextLang;
-      document.getElementById('fabLang').querySelector('span').textContent = nextLang;
+      // Language Switcher Controls & Flags
+      var tabEn = document.getElementById('langTabEn');
+      var tabNl = document.getElementById('langTabNl');
+      if (tabEn && tabNl) {
+        if (currentLang === 'en') {
+          tabEn.classList.add('active');
+          tabNl.classList.remove('active');
+        } else {
+          tabNl.classList.add('active');
+          tabEn.classList.remove('active');
+        }
+      }
+
+      var dTabEn = document.getElementById('drawerTabEn');
+      var dTabNl = document.getElementById('drawerTabNl');
+      if (dTabEn && dTabNl) {
+        if (currentLang === 'en') {
+          dTabEn.classList.add('active');
+          dTabNl.classList.remove('active');
+        } else {
+          dTabNl.classList.add('active');
+          dTabEn.classList.remove('active');
+        }
+      }
+
+      var fabLangBtn = document.getElementById('fabLang');
+      if (fabLangBtn) {
+        var nextIsNl = currentLang === 'en';
+        var flagSvg = nextIsNl
+          ? '<svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true"><path fill="#21468B" d="M0 0h640v480H0z"/><path fill="#FFF" d="M0 0h640v320H0z"/><path fill="#AE1C28" d="M0 0h640v160H0z"/></svg>'
+          : '<svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true"><path fill="#012169" d="M0 0h640v480H0z"/><path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 240l240 178v62h-80L320 301 81 480H0v-60l239-180L0 64V0h75z"/><path fill="#C8102E" d="m424 288 216 158v34h-46L378 300l46-12zM640 34 426 191l46 14L640 76V34zM0 446l214-157-46-14L0 404v42zm0-412 216 158-46 12L0 44V34z"/><path fill="#FFF" d="M240 0h160v480H240zM0 160h640v160H0z"/><path fill="#C8102E" d="M267 0h106v480H267zM0 187h640v106H0z"/></svg>';
+        fabLangBtn.innerHTML = flagSvg + '<span>' + (nextIsNl ? 'NL' : 'EN') + '</span>';
+      }
 
       // Hero
       document.getElementById('heroEyebrow').textContent = d.hero.eyebrow;
@@ -2226,6 +2322,12 @@
 
       // Trigger animation
       triggerAnimations();
+    }
+
+    function setLang(lang) {
+      if (lang === currentLang) return;
+      currentLang = lang;
+      renderPage();
     }
 
     function toggleLang() {
